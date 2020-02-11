@@ -82,7 +82,8 @@ async function addProduct() {
         const taskSnapshot = await ref.put(glImageFile2Add) // stores image into IMAGE_FOLDER location def'd in .html
         const image_url = await taskSnapshot.ref.getDownloadURL() // get URL of just uploaded image, can display, etc
 
-        // product: name, summary, price in Firestore
+        // product: name, condition, summary, price, quantity in Firestore
+        //name = name.replace(/ +/g, "")
         price = Number(price)
         quantity = Number(quantity)
         await firebase.firestore().collection(COLLECTION).doc()
@@ -98,10 +99,10 @@ async function addProduct() {
         // console.log('image_url', image_url)
         glPageContent.innerHTML = `
         <div class="media">
-            <img src="image_url" class="mr-3" alt="xxx">
+            <img src="${image_url}" class="mr-3" alt="xxx">
             <div class="media-body">
                 <h5 class="mt-0">${name} is added</h5>
-                Condition: ${condition} <br />Qty: ${quantity}
+                Condition: ${condition}<br />Price: ${price}<br />Qty: ${quantity}
             </div>
         </div>
     `;
