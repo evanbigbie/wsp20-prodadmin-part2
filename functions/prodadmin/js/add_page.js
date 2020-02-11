@@ -48,17 +48,17 @@ function add_page_secured() {
 }
 
 async function addProduct() {
-    const name = document.getElementById('name').value.toLowerCase().split(' ')
+    const name = document.getElementById('name').value/*.toLowerCase().split(' ')*/
     const condition = document.getElementById('condition').value
     const summary = document.getElementById('summary').value
     let price = document.getElementById('price').value
     let quantity = document.getElementById('quantity').value
 
-    
-    for (var i = 0; i < name.length; i++) {
-        name[i] = name[i].charAt(0).toUpperCase() + name[i].substring(1);
-    }
-    const capsName = name.join(' ');
+    // var name2 = name
+    // for (var i = 0; i < name2.length; i++) {
+    //     name2[i] = name2[i].charAt(0).toUpperCase() + name2[i].substring(1);
+    // }
+    // const capsName = name2.join(' ');
 
     // input validation
     const nameErrorTag = document.getElementById('name_error')
@@ -106,7 +106,7 @@ async function addProduct() {
         <div class="media">
             <img src="${image_url}" class="mr-3" alt="xxx">
             <div class="media-body">
-                <h5 class="mt-0">${capsName} is added</h5>
+                <h5 class="mt-0">${name} is added</h5>
                 Condition: ${condition.charAt(0).toUpperCase() + condition.slice(1).replace(/ +/g, "")}<br />Price: $${price}<br />Qty: ${quantity}
             </div>
         </div>
