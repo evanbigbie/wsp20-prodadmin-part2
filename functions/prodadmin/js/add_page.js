@@ -83,8 +83,7 @@ async function addProduct() {
         const image_url = await taskSnapshot.ref.getDownloadURL() // get URL of just uploaded image, can display, etc
 
         // product: name, condition, summary, price, quantity in Firestore
-        //name = name.replace(/ +/g, "")
-        price = Number(price)
+        price = Number(price).toFixed(2)
         quantity = Number(quantity)
         await firebase.firestore().collection(COLLECTION).doc()
             .set({name, condition, summary, price, quantity, image, image_url})
@@ -102,7 +101,7 @@ async function addProduct() {
             <img src="${image_url}" class="mr-3" alt="xxx">
             <div class="media-body">
                 <h5 class="mt-0">${name} is added</h5>
-                Condition: ${condition}<br />Price: ${price}<br />Qty: ${quantity}
+                Condition: ${condition.charAt(0).toUpperCase() + condition.slice(1).replace(/ +/g, "")}<br />Price: $${price}<br />Qty: ${quantity}
             </div>
         </div>
     `;
