@@ -8,10 +8,10 @@ function validate_name(name) {
 /////  video:
 
 function validate_condition(condition) {
-  var cond = condition.toLowerCase()
-  if ((cond.includes("new") && cond.trim().length == 3) 
-      || (cond.includes("open box") && cond.trim().length == 8) 
-      || cond.includes("used") && cond.trim().length == 4)
+  var cond = condition.toLowerCase().replace(/ +/g, "")
+  if ((cond.includes("new") && cond.length == 3) 
+      || (cond.includes("open") && cond.includes("box") && cond.trim().length == 7) 
+      || cond.includes("used") && cond.length == 4)
     return null
   else
     return 'Error: Please Type \'New\', \'Open Box\', or \'Used\''
